@@ -1,0 +1,64 @@
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐！</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffebcd;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            color: #d63384;
+        }
+        .cake {
+            width: 200px;
+            margin: 50px auto;
+        }
+        .ribbons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
+        }
+        .ribbon {
+            position: absolute;
+            width: 10px;
+            height: 50px;
+            background-color: pink;
+            opacity: 0.7;
+            animation: fall 3s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 生日快乐！🎂</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Birthday_cake.svg/512px-Birthday_cake.svg.png" alt="生日蛋糕" class="cake" onclick="showMessage()">
+    <audio autoplay loop>
+        <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mp3">
+    </audio>
+    <div class="ribbons"></div>
+    <script>
+        function showMessage() {
+            alert("祝你生日快乐！愿你每天都充满欢乐！🎈");
+        }
+        
+        function createRibbon() {
+            let ribbon = document.createElement("div");
+            ribbon.className = "ribbon";
+            ribbon.style.left = Math.random() * 100 + "vw";
+            ribbon.style.animationDuration = (Math.random() * 2 + 2) + "s";
+            document.querySelector(".ribbons").appendChild(ribbon);
+            setTimeout(() => ribbon.remove(), 3000);
+        }
+        setInterval(createRibbon, 200);
+    </script>
+</body>
+</html>
